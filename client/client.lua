@@ -37,6 +37,8 @@ function NearPed(npcmodel, npccoords, npcweapon, npcwander)
         Wait(50)
     end
     spawnedPed = CreatePed(npcmodel, npccoords.x, npccoords.y, npccoords.z - 1.0, npccoords.w, false, false, 0, 0)
+    NetworkRegisterEntityAsNetworked(spawnedPed)
+    SetNetworkIdExistsOnAllMachines(NetworkGetNetworkIdFromEntity(spawnedPed), true)
     SetEntityAlpha(spawnedPed, 0, false)
     SetPedKeepTask(spawnedPed)
     SetRandomOutfitVariation(spawnedPed, true)
