@@ -8,6 +8,7 @@ version '2.1.0'
 shared_scripts {
     '@ox_lib/init.lua',
     'shared/config.lua',
+    'shared/exports.lua'
 }
 
 client_scripts {
