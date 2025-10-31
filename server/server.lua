@@ -1,7 +1,6 @@
 local RSGCore = exports['rsg-core']:GetCoreObject()
-lib.locale()
-
 local playerSpawnCooldowns = {} -- anti-spam
+lib.locale()
 
 ---------------------------------
 -- discord webhook functions
@@ -41,21 +40,21 @@ local function LogOutlawStatusChange(src, citizenid, outlawStatus, reason)
     local identifier = GetPlayerIdentifiers(src)[1] or 'Unknown'
     
     local fields = {
-        { ["name"] = lib.locale('discord_field_player'), ["value"] = playerName, ["inline"] = true },
-        { ["name"] = lib.locale('discord_field_citizenid'), ["value"] = citizenid, ["inline"] = true },
-        { ["name"] = lib.locale('discord_field_wanted_level'), ["value"] = tostring(outlawStatus), ["inline"] = true },
-        { ["name"] = lib.locale('discord_field_identifier'), ["value"] = identifier, ["inline"] = false },
+        { ["name"] = locale('discord_field_player'), ["value"] = playerName, ["inline"] = true },
+        { ["name"] = locale('discord_field_citizenid'), ["value"] = citizenid, ["inline"] = true },
+        { ["name"] = locale('discord_field_wanted_level'), ["value"] = tostring(outlawStatus), ["inline"] = true },
+        { ["name"] = locale('discord_field_identifier'), ["value"] = identifier, ["inline"] = false },
     }
     
     if reason then
-        table.insert(fields, { ["name"] = lib.locale('discord_field_reason'), ["value"] = reason, ["inline"] = false })
+        table.insert(fields, { ["name"] = locale('discord_field_reason'), ["value"] = reason, ["inline"] = false })
     end
     
     local color = outlawStatus >= Config.OutlawTriggerAmount and 16711680 or 16776960 -- Red or Yellow
     
     SendDiscordLog(
-        lib.locale('discord_wanted_update_title'),
-        lib.locale('discord_wanted_update_desc'),
+        locale('discord_wanted_update_title'),
+        locale('discord_wanted_update_desc'),
         fields,
         color
     )
@@ -71,14 +70,14 @@ local function LogStatusCleared(src, citizenid)
     local identifier = GetPlayerIdentifiers(src)[1] or 'Unknown'
     
     local fields = {
-        { ["name"] = lib.locale('discord_field_player'), ["value"] = playerName, ["inline"] = true },
-        { ["name"] = lib.locale('discord_field_citizenid'), ["value"] = citizenid, ["inline"] = true },
-        { ["name"] = lib.locale('discord_field_identifier'), ["value"] = identifier, ["inline"] = false },
+        { ["name"] = locale('discord_field_player'), ["value"] = playerName, ["inline"] = true },
+        { ["name"] = locale('discord_field_citizenid'), ["value"] = citizenid, ["inline"] = true },
+        { ["name"] = locale('discord_field_identifier'), ["value"] = identifier, ["inline"] = false },
     }
     
     SendDiscordLog(
-        lib.locale('discord_status_cleared_title'),
-        lib.locale('discord_status_cleared_desc'),
+        locale('discord_status_cleared_title'),
+        locale('discord_status_cleared_desc'),
         fields,
         65280 -- Green color
     )
@@ -168,8 +167,8 @@ RegisterNetEvent('rex-wanted:server:clearOutlawStatus', function()
             
             -- Notify player
             TriggerClientEvent('ox_lib:notify', src, {
-                title = lib.locale('notify_outlaw_cleared_title'),
-                description = lib.locale('notify_outlaw_cleared_desc'),
+                title = locale('notify_outlaw_cleared_title'),
+                description = locale('notify_outlaw_cleared_desc'),
                 type = 'success',
                 duration = 5000
             })
@@ -199,10 +198,10 @@ RegisterNetEvent('rex-wanted:server:updateOutlawStatus', function(newStatus, rea
             LogOutlawStatusChange(src, citizenid, newStatus, reason)
             
             -- Notify player
-            local statusText = newStatus >= Config.OutlawTriggerAmount and lib.locale('notify_outlaw_wanted') or lib.locale('notify_outlaw_updated')
+            local statusText = newStatus >= Config.OutlawTriggerAmount and locale('notify_outlaw_wanted') or locale('notify_outlaw_updated')
             TriggerClientEvent('ox_lib:notify', src, {
-                title = lib.locale('notify_outlaw_status_title') .. ' ' .. statusText,
-                description = lib.locale('notify_outlaw_level', {level = newStatus}),
+                title = locale('notify_outlaw_status_title') .. ' ' .. statusText,
+                description = locale('notify_outlaw_level', {level = newStatus}),
                 type = newStatus >= Config.OutlawTriggerAmount and 'error' or 'warning',
                 duration = 5000
             })

@@ -12,7 +12,7 @@ Config.Discord = {
     Enabled = true,
     WebhookURL = '', -- Add your webhook URL here
     BotName = 'Wanted System',
-    BotAvatar = 'https://i.imgur.com/placeholder.png', -- Optional avatar URL
+    BotAvatar = '', -- Optional avatar URL
     Color = 16711680, -- Red color (decimal)
     
     -- Event toggles
