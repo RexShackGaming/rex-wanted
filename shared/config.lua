@@ -3,12 +3,33 @@ Config = {}
 Config.WantedSystemActive  = true
 Config.OutlawTriggerAmount = 20
 Config.UpdateInterval = 1
+Config.ClearWantedOnDeath = true -- Clear outlaw status when player dies
+
+---------------------------------
+-- discord webhook settings
+---------------------------------
+Config.Discord = {
+    Enabled = true,
+    WebhookURL = '', -- Add your webhook URL here
+    BotName = 'Wanted System',
+    BotAvatar = 'https://i.imgur.com/placeholder.png', -- Optional avatar URL
+    Color = 16711680, -- Red color (decimal)
+    
+    -- Event toggles
+    LogOutlawStatus = true, -- Log when player becomes wanted
+    LogStatusCleared = true, -- Log when wanted status is cleared
+    LogThresholdReached = true, -- Log when outlaw trigger amount is reached
+}
 
 ---------------------------------
 -- npc settings
 ---------------------------------
 Config.DistanceSpawn = 100.0
-Config.FadeIn = true
+Config.FadeIn = false -- disabled for performance
+Config.MaxSpawnedPedsPerPlayer = 10 -- prevent resource exhaustion
+Config.LocationCheckInterval = 1000 -- ms between location checks (was 500)
+Config.StatusCheckInterval = 10000 -- ms between outlaw status checks (was 5000)
+Config.NearbyLocationRange = 300.0 -- only check locations within this range
 
 ---------------------------------
 -- npc locations

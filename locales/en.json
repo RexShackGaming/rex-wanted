@@ -1,4 +1,17 @@
 {
-    "cl_lang_1" : "client text",
-    "sv_lang_1" : "server text",
+    "discord_wanted_update_title" : "🚨 Wanted Status Update",
+    "discord_wanted_update_desc" : "A player's wanted status has changed",
+    "discord_status_cleared_title" : "✅ Wanted Status Cleared",
+    "discord_status_cleared_desc" : "A player's wanted status has been cleared",
+    "discord_field_player" : "Player",
+    "discord_field_citizenid" : "Citizen ID",
+    "discord_field_wanted_level" : "Wanted Level",
+    "discord_field_identifier" : "Identifier",
+    "discord_field_reason" : "Reason",
+    "notify_outlaw_cleared_title" : "Outlaw Status Cleared",
+    "notify_outlaw_cleared_desc" : "Your wanted level has been cleared",
+    "notify_outlaw_wanted" : "WANTED",
+    "notify_outlaw_updated" : "Updated",
+    "notify_outlaw_status_title" : "Outlaw Status",
+    "notify_outlaw_level" : "Your wanted level: %{level}"
 }
