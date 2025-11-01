@@ -1,7 +1,7 @@
 Config = {}
 
 Config.WantedSystemActive  = true
-Config.OutlawTriggerAmount = 20
+Config.OutlawTriggerAmount = 100
 Config.UpdateInterval = 1
 Config.ClearWantedOnDeath = true -- Clear outlaw status when player dies
 
