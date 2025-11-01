@@ -209,6 +209,29 @@ RegisterNetEvent('rex-wanted:server:updateOutlawStatus', function(newStatus, rea
     end)
 end)
 
+---------------------------------
+-- cronjob: reduce outlaw status by 1 every minute (only online players)
+---------------------------------
+lib.cron.new('* * * * *', function()
+    local Players = RSGCore.Functions.GetPlayers()
+    for _, playerId in ipairs(Players) do
+        local Player = RSGCore.Functions.GetPlayer(playerId)
+        if Player then
+            local citizenid = Player.PlayerData.citizenid
+            -- fetch current outlaw status
+            MySQL.query('SELECT outlawstatus FROM players WHERE citizenid = ? LIMIT 1', {citizenid}, function(result)
+                if result and result[1] and result[1].outlawstatus and result[1].outlawstatus > 0 then
+                    local newStatus = math.max(0, result[1].outlawstatus - 1)
+                    MySQL.update('UPDATE players SET outlawstatus = ? WHERE citizenid = ?', {newStatus, citizenid}, function()
+                        -- Update cache
+                        statusCache[citizenid] = { value = newStatus, time = GetGameTimer() }
+                    end)
+                end
+            end)
+        end
+    end
+end)
+
 -- Cleanup cache on player drop
 AddEventHandler('playerDropped', function()
     local src = source
