@@ -13,8 +13,8 @@ A dynamic wanted/outlaw system for RedM that spawns bounty hunters to pursue pla
 - [Check our YouTube for tutorials](https://www.youtube.com/@rexshack/videos)
 
 ## 💝 Support the Developer
-[Subscribe as RexSupporter](https://rexshackgaming.tebex.io/package/6431279)
-[Purchase Premium Resources](https://rexshackgaming.tebex.io/)
+- [Subscribe as RexSupporter](https://rexshackgaming.tebex.io/package/6431279)
+- [Purchase Premium Resources](https://rexshackgaming.tebex.io/)
 
 Your support helps fund continued development and new features!
 
